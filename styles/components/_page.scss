@@ -1,0 +1,123 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+
+/// Sekcja kontakt
+.contact__quote {
+  margin-top: 8px;
+  font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem);
+  color: var(--ink);
+}
+
+.contact__methods {
+  list-style: none;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(0.92rem, 0.85rem + 0.35vw, 1.05rem);
+}
+
+.contact__method {
+  padding: 24px 0;
+
+  + .contact__method {
+    border-top: 1px solid var(--line);
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
+.contact__locations-label {
+  font-size: clamp(0.92rem, 0.85rem + 0.35vw, 1.05rem);
+  margin-bottom: 18px;
+}
+
+.contact__location {
+  + .contact__location {
+    margin-top: 24px;
+  }
+}
+
+.contact__address {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: inherit;
+  font-size: clamp(0.9rem, 0.84rem + 0.3vw, 1.02rem);
+}
+
+.contact__map {
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+  iframe {
+    width: 100%;
+    height: 220px;
+    border: 0;
+    display: block;
+  }
+}
+
+/// Stopka
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 44px 6vw 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem);
+  color: var(--ink-soft);
+  width: 100%;
+  max-width: v.$section-max-width;
+}
+
+.footer__logo-link {
+  display: block;
+  @include m.scale-hover;
+}
+
+.footer__logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.footer__links {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+
+  a {
+    position: relative;
+    display: inline-block;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: var(--green-deep);
+      transform: scale(1.1);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}

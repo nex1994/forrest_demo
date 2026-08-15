@@ -1,0 +1,56 @@
+@use "sass:map";
+
+// Paleta barw Forrest — jedno źródło prawdy dla Sass i CSS custom properties.
+$palette: (
+  "cream": #FAF2E7,
+  // ciepły krem
+  "cream-deep": #EFD4B9,
+  // naturalny piasek
+  "sage": #ACA485,
+  // szałwiowa zieleń
+  "sage-deep": #705A37,
+  // ciepły brąz
+  "clay": #E1B485,
+  // jasna morela
+  "clay-deep": #C68E52,
+  // morela, przyciemniona
+  "ink": #4E4124,
+  // forrest głęboka zieleń
+  "ink-soft": #705A37,
+  // ciepły brąz
+  "line": #E3D2B7,
+  // linia / obwódka
+  "green-light": #A8D89A,
+  // zieleń forrest jasna
+  "green-deep": #4A7530,
+  // zieleń forrest jasna, przyciemniona dla kontrastu WCAG AA na jasnym tle
+  "olive": #7A7B60,
+  // oliwkowa zieleń
+  "mist": #C3D4D4,
+  // błękit mgły
+  "pink": #F498C1,
+  // pudrowy róż
+);
+
+@function color($name) {
+  @return map.get($palette, $name);
+}
+
+// Fonty ustawiane przez next/font w layout.tsx jako CSS custom properties.
+$font-serif: var(--font-garamond), serif;
+$font-sans: var(--font-montserrat), sans-serif;
+
+// Breakpointy (max-width, mobile-first w treści, ale reguły pisane jako "do X px")
+$bp-mobile: 430px;
+$bp-tablet: 760px;
+$bp-tablet-lg: 820px;
+$bp-desktop-sm: 860px;
+
+// Współdzielone wartości layoutu
+$section-max-width: min(1200px, 95vw);
+$section-padding-x: 3rem;
+$section-padding-bottom: 10rem;
+$radius-lg: 22px;
+$radius-md: 20px;
+$radius-sm: 16px;
+$shadow-card: 0 24px 50px -20px rgba(90, 58, 30, 0.24);

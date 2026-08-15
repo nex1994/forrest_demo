@@ -1,0 +1,75 @@
+@use "variables" as v;
+
+/// Media query helper — "do szerokości $bp".
+@mixin mq($bp) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}
+
+@mixin flex-center($gap: 0) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin card-shadow {
+  box-shadow: v.$shadow-card;
+}
+
+/// Wspólny padding sekcji (boki + dół), bez marginesu — centrowanie robi rodzic (body flex).
+@mixin section-padding {
+  padding: 0 v.$section-padding-x v.$section-padding-bottom;
+}
+
+/// Tekst dostępny dla czytników ekranu, niewidoczny wizualnie (nie display:none).
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/// Spójny obrys fokusu klawiaturowego (WCAG 2.4.7).
+@mixin focus-ring($color: v.color("pink")) {
+  &:focus-visible {
+    outline: 3px solid $color;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/// Powiększenie całego elementu przy hover — te same wartości co linki nav.
+@mixin scale-hover($scale: 1.05) {
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(#{$scale});
+  }
+}
+
+/// Animacja wjazdu przy scrollu, wyłączana dla prefers-reduced-motion.
+@mixin reveal-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,70 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.hero {
+  width: 100%;
+  min-height: 100svh;
+  padding: 0 0 v.$section-padding-bottom;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+
+  @include m.mq(v.$bp-tablet) {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  @include m.mq(v.$bp-tablet) {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.hero__unmute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: none;
+  background: var(--pink);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s;
+  @include m.flex-center;
+
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  @include m.mq(v.$bp-tablet) {
+    width: 48px;
+    height: 48px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

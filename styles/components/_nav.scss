@@ -1,0 +1,107 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 6vw;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav__brand-link {
+  text-decoration: none;
+  @include m.scale-hover;
+}
+
+.nav__logo-badge {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: rgba(195, 212, 212, 0.9);
+  overflow: hidden;
+  @include m.flex-center;
+
+  @include m.mq(v.$bp-tablet) {
+    width: 84px;
+    height: 84px;
+  }
+}
+
+.nav__logo-img {
+  height: 64px;
+  width: auto;
+  display: block;
+
+  .nav__logo-badge & {
+    height: auto;
+    width: 76%;
+  }
+}
+
+.nav__metoda-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+
+  @include m.mq(v.$bp-tablet) {
+    height: 24px;
+  }
+}
+
+.nav__links {
+  display: flex;
+  gap: 28px;
+  font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.85rem);
+  letter-spacing: 0.03em;
+
+  @include m.mq(v.$bp-tablet-lg) {
+    display: none;
+  }
+}
+
+.nav__link {
+  position: relative;
+  display: inline-block;
+  color: var(--mist);
+  text-decoration: none;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55), 0 1px 14px rgba(0, 0, 0, 0.3);
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: #fff;
+    transform: scale(1.2);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+/// Pasek "Rekrutacja" — zawsze przypięty do dołu viewportu
+.cta-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  background: var(--cream-deep);
+  border-top: 2px solid var(--line);
+  border-radius: 32px 32px 0 0;
+  padding: 28px 6vw calc(28px + env(safe-area-inset-bottom, 0px));
+}
+
+.cta-bar__row {
+  max-width: v.$section-max-width;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-bar__title {
+  font-family: v.$font-serif;
+  font-weight: 700;
+  color: var(--olive);
+  font-size: clamp(1.35rem, 1.15rem + 0.9vw, 1.7rem);
+}
+
+.cta-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-bar__phone a {
+  position: relative;
+  display: inline-block;
+  color: var(--olive);
+  text-decoration: none;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  @include m.scale-hover;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.cta-bar__button a {
+  display: inline-block;
+  background: var(--mist);
+  color: var(--olive);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 0.8rem + 0.3vw, 0.95rem);
+  padding: 20px 22px;
+  border-radius: v.$radius-sm;
+  @include m.scale-hover;
+}
+
+@include m.mq(v.$bp-mobile) {
+  .cta-bar__row {
+    justify-content: center;
+    text-align: center;
+  }
+}

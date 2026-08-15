@@ -1,0 +1,281 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.section {
+  width: 100%;
+  max-width: v.$section-max-width;
+  scroll-margin-top: 70px;
+  position: relative;
+  z-index: 1;
+  @include m.section-padding;
+}
+
+/// "Dlaczego Forrest" jest górną połową jednego wspólnego panelu z "Las, który uczy" —
+/// padding-top musi wygrać z .section, stąd zakotwiczenie po ID.
+#nazwa.panel--sage--top {
+  padding-top: 5rem;
+  padding-bottom: 0;
+}
+
+#las.panel--sage--bottom {
+  padding-top: 5rem;
+}
+
+#kontakt.section {
+  padding-top: 5rem;
+}
+
+/// Sekcja "Jak uczy się dziecko" — nagłówek, zdjęcie i tekst jako 3 niezależne
+/// elementy, żeby poniżej 964px móc ustawić kolejność: header -> zdjęcie -> tekst.
+/// Podwójna klasa (.split.metoda__split) dla specyficzności wyższej niż .split.
+.split.metoda__split {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+
+  .metoda__header {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .split__portrait--metoda {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    margin: auto 0;
+  }
+
+  .split__text {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  @media (max-width: 964px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+
+    .metoda__header {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .split__portrait--metoda {
+      grid-column: 1;
+      grid-row: 2;
+      margin: 0 auto;
+    }
+
+    .split__text {
+      grid-column: 1;
+      grid-row: 3;
+    }
+  }
+}
+
+@include m.mq(v.$bp-desktop-sm) {
+  #las .split__text {
+    text-align: center;
+
+    .section__lede--narrow {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  #las .split__media {
+    min-height: 480px;
+  }
+}
+
+.section__inner {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &--wide {
+    max-width: 960px;
+  }
+}
+
+.section--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/// Sekcja tuż pod video w hero — bez pełnego górnego paddingu sekcji
+.section--flush-top {
+  padding-top: 48px;
+}
+
+.section--pb-sm {
+  padding-bottom: 65px;
+}
+
+/// Odstępy między blokami Reveal (zastępują pojedyncze inline marginTop)
+.mt-36 {
+  margin-top: 36px;
+}
+
+.mt-48 {
+  margin-top: 48px;
+}
+
+.mt-56 {
+  margin-top: 56px;
+}
+
+.section__title--offset {
+  margin-top: 14px;
+}
+
+.section__lede--narrow {
+  max-width: 640px;
+}
+
+.section__quote--lg {
+  font-size: clamp(1rem, 0.86rem + 0.7vw, 1.2rem);
+}
+
+.visually-hidden-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/// Dwukolumnowy layout tekst + media (historia, rodzice, "każde dziecko", las)
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: stretch;
+
+  &--center {
+    align-items: center;
+  }
+
+  @include m.mq(v.$bp-desktop-sm) {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+.split__text {
+  text-align: left;
+}
+
+.split__media {
+  position: relative;
+  height: 100%;
+  min-height: 320px;
+  max-height: 100vh;
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  @include m.card-shadow;
+  @include m.scale-hover;
+
+  &--rodzice {
+    height: auto;
+    max-height: 100vh;
+    aspect-ratio: 1108 / 1478;
+    border-radius: 7% 31% 10% 46% / 8% 33% 10% 43%;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  img {
+    object-fit: cover;
+  }
+}
+
+/// Pionowy portret 9:16 (sekcja "Każde dziecko")
+.split__portrait {
+  @include m.flex-center;
+  @include m.scale-hover;
+  width: min(100%, calc(100vh * 1120 / 1496));
+  height: auto;
+  max-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  aspect-ratio: 1120 / 1496;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+
+  &--metoda {
+    aspect-ratio: 881 / 1586;
+    width: min(100%, calc(100vh * 881 / 1586));
+  }
+
+  &--program {
+    aspect-ratio: 1131 / 1589;
+    width: min(100%, calc(100vh * 1131 / 1589));
+    border-radius: 62% 38% 40% 60% / 30% 30% 70% 70%;
+    overflow: hidden;
+  }
+}
+
+/// Tekst + zdjęcie tej samej wysokości, obok siebie (sekcja "Przestrzeń do tworzenia")
+.feature-row {
+  display: flex;
+  gap: 56px;
+  align-items: stretch;
+
+  @include m.mq(v.$bp-desktop-sm) {
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+.feature-row__text {
+  flex: 1 1 0;
+  text-align: left;
+
+  h3 {
+    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.4rem);
+    margin-bottom: 14px;
+  }
+}
+
+.feature-row__media {
+  flex: 1 1 0;
+  position: relative;
+  min-height: 320px;
+  max-height: 100vh;
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  @include m.card-shadow;
+  @include m.scale-hover;
+
+  img {
+    object-fit: cover;
+    object-position: center 70%;
+  }
+
+  @include m.mq(v.$bp-desktop-sm) {
+    min-height: 280px;
+  }
+}
+
+.subsection {
+  margin-top: 40px;
+  text-align: left;
+
+  h3 {
+    font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.3rem);
+    margin-bottom: 10px;
+
+    &:not(:first-child) {
+      margin-top: 40px;
+    }
+  }
+}
+
+
+/// Fade-in on scroll — patrz components/reveal/reveal.tsx
+.reveal {
+  @include m.reveal-fade;
+}
