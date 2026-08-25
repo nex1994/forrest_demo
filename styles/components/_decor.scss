@@ -1,0 +1,87 @@
+@use "../abstracts/variables" as v;
+
+.decor {
+  color: var(--green-deep);
+  opacity: 0.75;
+}
+
+.decor--bow {
+  display: block;
+  color: var(--pink);
+  margin: 6px 0 22px;
+
+  .section--center &,
+  .section__inner &,
+  .hero &,
+  [class*="__header"] & {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.decor--tree {
+  color: var(--sage-deep);
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.decor--leaf {
+  color: var(--green-deep);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/// Cienki pasek w romby (róż/zieleń naprzemiennie) — separator między zakładkami tematycznymi.
+.decor-divider {
+  width: 100%;
+  max-width: v.$section-max-width;
+  height: 26px;
+  margin: 0 auto;
+  opacity: 0.5;
+  background-image: repeating-linear-gradient(
+      45deg,
+      var(--pink) 0,
+      var(--pink) 13px,
+      transparent 13px,
+      transparent 26px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      var(--green-light) 0,
+      var(--green-light) 13px,
+      transparent 13px,
+      transparent 26px
+    );
+  background-size: 26px 26px;
+  background-position: center;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+/// Proporczyki — akcent nad kartami/nagłówkami, w palecie klienta.
+.decor-pennants {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/// Postać z key visual — pływający akcent, delikatny cień dla oddzielenia od tła.
+.decor-character {
+  display: block;
+  height: auto;
+  filter: drop-shadow(0 10px 16px rgba(78, 65, 36, 0.18));
+  pointer-events: none;
+}
+
+/// Miękka plama akwareli — tło pod cytatami, czysty CSS.
+.decor-blob {
+  position: absolute;
+  z-index: -1;
+  width: 340px;
+  height: 240px;
+  background: radial-gradient(ellipse at center, var(--pink) 0%, transparent 70%);
+  opacity: 0.16;
+  filter: blur(6px);
+  pointer-events: none;
+}

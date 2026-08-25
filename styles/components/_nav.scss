@@ -2,17 +2,44 @@
 @use "../abstracts/mixins" as m;
 
 .nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   padding: 10px 6vw;
   background: transparent;
   border-bottom: 1px solid transparent;
+  transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &--scrolled,
+  &--open {
+    background: rgba(250, 242, 231, 0.94);
+    backdrop-filter: blur(6px);
+    border-bottom-color: var(--line);
+    box-shadow: 0 8px 24px -18px rgba(78, 65, 36, 0.4);
+
+    .nav__link {
+      color: var(--ink);
+      text-shadow: none;
+    }
+
+    .nav__link:hover {
+      color: var(--green-deep);
+    }
+
+    .nav__metoda-img {
+      filter: none;
+    }
+
+    .nav__burger span {
+      background: var(--ink);
+    }
+  }
 }
 
 .nav__brand {
@@ -36,8 +63,8 @@
   @include m.flex-center;
 
   @include m.mq(v.$bp-tablet) {
-    width: 84px;
-    height: 84px;
+    width: 72px;
+    height: 72px;
   }
 }
 
@@ -59,7 +86,7 @@
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
 
   @include m.mq(v.$bp-tablet) {
-    height: 24px;
+    height: 22px;
   }
 }
 
@@ -97,11 +124,95 @@
   }
 
   &:hover {
-    color: #fff;
-    transform: scale(1.2);
+    transform: scale(1.1);
 
     &::after {
       transform: scaleX(1);
     }
   }
+}
+
+/// CTA "Dołącz do nas!" — zawsze widoczny, ten sam wygląd co przycisk dolnego paska (.cta-bar__button).
+.nav__cta {
+  display: inline-block;
+  flex-shrink: 0;
+  background: var(--mist);
+  color: var(--olive);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 0.8rem + 0.3vw, 0.95rem);
+  padding: 20px 22px;
+  border-radius: v.$radius-sm;
+  @include m.scale-hover;
+  @include m.button-shadow;
+}
+
+/// Hamburger — widoczny tylko poniżej progu, na którym chowają się .nav__links.
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+    transition: background 0.3s ease-in-out;
+  }
+
+  @include m.mq(v.$bp-tablet-lg) {
+    display: flex;
+  }
+}
+
+.nav--open .nav__burger span {
+  background: var(--ink);
+}
+
+.nav__mobile {
+  display: none;
+}
+
+.nav--open .nav__mobile {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 68px 0 0 0;
+  z-index: 190;
+  background: var(--cream);
+  padding: 12px 6vw 40px;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.nav__mobile-link {
+  color: var(--ink);
+  text-decoration: none;
+  font-family: v.$font-display;
+  font-size: 1.3rem;
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__mobile-cta {
+  display: inline-block;
+  margin-top: 24px;
+  text-align: center;
+  background: var(--mist);
+  color: var(--olive);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 16px 24px;
+  border-radius: v.$radius-sm;
+  @include m.button-shadow;
 }

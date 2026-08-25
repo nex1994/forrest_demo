@@ -1,0 +1,239 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.placowki__pennants {
+  margin: 0 auto 18px;
+}
+
+.placowki__leaf {
+  display: inline-block;
+  vertical-align: -3px;
+  width: 16px;
+  margin-right: 4px;
+}
+
+.placowki {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+
+  @include m.mq(v.$bp-desktop-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.placowka-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  background: #FAF2E7F0;
+  border: 1px solid var(--line);
+  @include m.card-shadow;
+  @include m.scale-hover;
+}
+
+.placowka-card__image {
+  position: relative;
+  width: 100%;
+  height: 280px;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.placowka-card__body {
+  padding: 30px 30px 34px;
+  text-align: left;
+
+  h3 {
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem);
+    margin-bottom: 8px;
+  }
+}
+
+.placowka-card__meta {
+  font-family: v.$font-body;
+  color: var(--ink-soft);
+  font-size: clamp(0.85rem, 0.8rem + 0.25vw, 0.95rem);
+  margin-bottom: 18px;
+}
+
+.placowka-card__link {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+/// Podstrony placówek — hero
+.subpage-hero {
+  width: 100%;
+  min-height: 60svh;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  color: var(--cream);
+  overflow: hidden;
+
+  @include m.mq(v.$bp-tablet) {
+    min-height: 50svh;
+  }
+}
+
+.subpage-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  img {
+    object-fit: cover;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(78, 65, 36, 0.15) 0%, rgba(78, 65, 36, 0.75) 100%);
+  }
+}
+
+.subpage-hero__text {
+  width: 100%;
+  max-width: v.$section-max-width;
+  margin: 0 auto;
+  padding: 120px 6vw 56px;
+
+  .eyebrow {
+    color: var(--green-light);
+  }
+
+  h1 {
+    color: var(--cream);
+  }
+
+  .section__lede {
+    color: #EDF1E9;
+    max-width: 640px;
+  }
+}
+
+.subpage-hero__back {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--cream);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+/// Tabela faktów o placówce
+.facts {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.facts__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+
+  &:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  @include m.mq(v.$bp-mobile) {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+.facts__label {
+  font-weight: 700;
+  color: var(--ink);
+  flex: 0 0 auto;
+}
+
+.facts__value {
+  color: var(--ink-soft);
+  text-align: right;
+
+  @include m.mq(v.$bp-mobile) {
+    text-align: left;
+  }
+}
+
+.facts__badge {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--pink-soft);
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.subpage-extra {
+  grid-template-columns: repeat(3, 1fr);
+
+  @include m.mq(v.$bp-desktop-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subpage-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.subpage-contact__mail {
+  color: var(--ink-soft);
+  text-decoration: underline;
+}
+
+/// Baner z cytatem na ciemnej zieleni + logo — ulubiony element klientki z mockupu.
+.quote-banner {
+  width: 100%;
+  max-width: v.$section-max-width;
+  margin: 0 auto;
+  padding: 0 v.$section-padding-x v.$section-padding-bottom;
+}
+
+.quote-banner__inner {
+  background: var(--ink);
+  border-radius: v.$radius-lg;
+  padding: min(9vw, 80px) 6vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.quote-banner__text {
+  font-family: v.$font-subhead;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--cream);
+  font-size: clamp(1.4rem, 1.1rem + 1.6vw, 2.1rem);
+  line-height: 1.4;
+  max-width: 720px;
+}
+
+.quote-banner__logo {
+  width: 110px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}

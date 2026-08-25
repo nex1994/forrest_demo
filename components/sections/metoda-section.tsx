@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal/reveal";
+import { Bow } from "@/components/decor/decor";
 
 export function MetodaSection() {
   return (
@@ -7,6 +8,7 @@ export function MetodaSection() {
       <Reveal className="split split--center metoda__split">
         <div className="metoda__header">
           <h2 className="section__title">Jak uczy się dziecko</h2>
+          <Bow />
         </div>
         <div className="split__portrait split__portrait--metoda">
           <Image
@@ -22,7 +24,7 @@ export function MetodaSection() {
             Dziecko nie poznaje świata wyłącznie przy stoliku. Poznaje go całym sobą.
           </p>
           <p className="section__lede section__quote">
-            Dotyka. Pyta. Biega. Buduje. Obserwuj. Popełnia błędy. Próbuje jeszcze raz.
+            Dotyka. Pyta. Biega. Buduje. Obserwuje. Popełnia błędy. Próbuje jeszcze raz.
           </p>
           <p className="section__lede">
             Właśnie z takiego spojrzenia na dziecko powstała{" "}

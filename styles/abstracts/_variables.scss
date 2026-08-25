@@ -10,10 +10,6 @@ $palette: (
   // szałwiowa zieleń
   "sage-deep": #705A37,
   // ciepły brąz
-  "clay": #E1B485,
-  // jasna morela
-  "clay-deep": #C68E52,
-  // morela, przyciemniona
   "ink": #4E4124,
   // forrest głęboka zieleń
   "ink-soft": #705A37,
@@ -29,7 +25,11 @@ $palette: (
   "mist": #C3D4D4,
   // błękit mgły
   "pink": #F498C1,
-  // pudrowy róż
+  // pudrowy róż — akcent klienta
+  "pink-soft": #F6BBD0,
+  // pudrowy róż rozjaśniony kremem — tła kart
+  "green-soft": #CEE4BC,
+  // jasna zieleń rozjaśniona kremem — tła kart
 );
 
 @function color($name) {
@@ -37,8 +37,12 @@ $palette: (
 }
 
 // Fonty ustawiane przez next/font w layout.tsx jako CSS custom properties.
-$font-serif: var(--font-garamond), serif;
-$font-sans: var(--font-montserrat), sans-serif;
+// Układ wg dokumentu klientki (vintage_naglowek_skrypt_tlo.html).
+$font-display: var(--font-abril), serif; // duże nagłówki (H1/H2, hero)
+$font-subhead: var(--font-bodoni), serif; // podtytuły (H3), nav, eyebrow, cytaty
+$font-body: var(--font-lora), serif; // akapity — czytelność w dłuższym tekście
+$font-script: var(--font-sacramento), cursive; // duży akcent skryptowy
+$font-script-alt: var(--font-alex-brush), cursive; // mniejszy akcent na pojedyncze słowa
 
 // Breakpointy (max-width, mobile-first w treści, ale reguły pisane jako "do X px")
 $bp-mobile: 430px;

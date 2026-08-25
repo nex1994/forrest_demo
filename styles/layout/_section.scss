@@ -25,6 +25,11 @@
   padding-top: 5rem;
 }
 
+#droga.section,
+#metoda.section {
+  padding-top: 5rem;
+}
+
 /// Sekcja "Jak uczy się dziecko" — nagłówek, zdjęcie i tekst jako 3 niezależne
 /// elementy, żeby poniżej 964px móc ustawić kolejność: header -> zdjęcie -> tekst.
 /// Podwójna klasa (.split.metoda__split) dla specyficzności wyższej niż .split.
@@ -104,10 +109,6 @@
 /// Sekcja tuż pod video w hero — bez pełnego górnego paddingu sekcji
 .section--flush-top {
   padding-top: 48px;
-}
-
-.section--pb-sm {
-  padding-bottom: 65px;
 }
 
 /// Odstępy między blokami Reveal (zastępują pojedyncze inline marginTop)
@@ -198,7 +199,8 @@
   margin: 0 auto;
   position: relative;
   aspect-ratio: 1120 / 1496;
-  border-radius: v.$radius-lg;
+  // Łukowy kadr (drzwi/arch) — motyw z wizualizacji klientki.
+  border-radius: 260px 260px 24px 24px;
   overflow: hidden;
 
   img {
@@ -224,9 +226,17 @@
   gap: 56px;
   align-items: stretch;
 
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+
   @include m.mq(v.$bp-desktop-sm) {
     flex-direction: column;
     gap: 28px;
+
+    &--reverse {
+      flex-direction: column;
+    }
   }
 }
 
@@ -274,6 +284,30 @@
   }
 }
 
+
+/// Hero "Każde dziecko ma swoją drogę" — proporczyki nad łukowym zdjęciem + cielę w tekście.
+.droga__calf {
+  margin-top: 28px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.droga__media {
+  position: relative;
+}
+
+.droga__pennants {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(70%, 320px);
+  z-index: 2;
+
+  @include m.mq(v.$bp-desktop-sm) {
+    width: min(80%, 280px);
+  }
+}
 
 /// Fade-in on scroll — patrz components/reveal/reveal.tsx
 .reveal {

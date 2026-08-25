@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/reveal/reveal";
 
 export function HistoriaSection() {
@@ -24,29 +25,38 @@ export function HistoriaSection() {
             później zaczynają uczyć.
           </p>
         </div>
-        <div className="split__text">
-          <p className="eyebrow">Kim jestem</p>
-          <p className="section__lede">
-            Jestem logopedą, pedagogiem specjalnym i neurodydaktykiem. Posiadam certyfikat terapeuty
-            Metody Krakowskiej®, jestem diagnostą ADOS-2, trenerem FamilyLab Jespera Juula,
-            certyfikowanym terapeutą ESDM oraz metodykiem nauczania języków obcych. Ukończyłam studia
-            pedagogiczne na Uniwersytecie Warmińsko-Mazurskim oraz studia kierunkowe na Uniwersytecie
-            Warszawskim.
-          </p>
-          <p className="section__lede">
-            Od dwudziestu lat pracuję z dziećmi w wieku przedszkolnym i wczesnoszkolnym. Od dziesięciu
-            lat razem z partnerem Darkiem oraz synami Gabrielem i Mieszkiem tworzymy Przedszkola
-            Forrest.
-          </p>
-          <p className="section__lede">
-            Najlepiej czuję się tam, gdzie nikt by mnie się nie spodziewał — na dywanie, siedząc razem z
-            dziećmi w trakcie zabawy, bo właśnie stamtąd widać najwięcej. Uwielbiam też podróże — i to
-            nie tylko te dalekie. Czasem najciekawsza wyprawa to ta do lasu, tuż za oknem przedszkola.
-          </p>
-          <p className="section__lede section__quote">
-            Forrest — stworzony z marzeń, by spełniać marzenia.
-          </p>
+        <div className="split__media historia__media">
+          <Image
+            src="/images/forrest/gotowe/magda-gabriel-real.jpg"
+            alt="Magda z synem Gabrielem — historia, od której zaczął się Forrest"
+            fill
+            sizes="(max-width: 860px) 92vw, 46vw"
+          />
         </div>
+      </Reveal>
+
+      <Reveal className="section__inner section--center mt-56">
+        <p className="accent-script accent-script--lg">Kim jestem</p>
+        <p className="section__lede">
+          Jestem logopedą, pedagogiem specjalnym i neurodydaktykiem. Posiadam certyfikat terapeuty
+          Metody Krakowskiej®, jestem diagnostą ADOS-2, trenerem FamilyLab Jespera Juula,
+          certyfikowanym terapeutą ESDM oraz metodykiem nauczania języków obcych. Ukończyłam studia
+          pedagogiczne na Uniwersytecie Warmińsko-Mazurskim oraz studia kierunkowe na Uniwersytecie
+          Warszawskim.
+        </p>
+        <p className="section__lede">
+          Od dwudziestu lat pracuję z dziećmi w wieku przedszkolnym i wczesnoszkolnym. Od dziesięciu
+          lat razem z partnerem Darkiem oraz synami Gabrielem i Mieszkiem tworzymy Przedszkola
+          Forrest.
+        </p>
+        <p className="section__lede">
+          Najlepiej czuję się tam, gdzie nikt by mnie się nie spodziewał — na dywanie, siedząc razem z
+          dziećmi w trakcie zabawy, bo właśnie stamtąd widać najwięcej. Uwielbiam też podróże — i to
+          nie tylko te dalekie. Czasem najciekawsza wyprawa to ta do lasu, tuż za oknem przedszkola.
+        </p>
+        <p className="section__lede section__quote">
+          Forrest — stworzony z marzeń, by spełniać marzenia.
+        </p>
       </Reveal>
     </section>
   );
