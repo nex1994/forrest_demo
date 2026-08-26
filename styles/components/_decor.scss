@@ -1,0 +1,38 @@
+.decor {
+  color: var(--green-deep);
+  opacity: 0.75;
+}
+
+.decor--leaf {
+  color: var(--green-deep);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/// Proporczyki — akcent nad kartami/nagłówkami, w palecie klienta.
+.decor-pennants {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/// Postać z key visual — pływający akcent, delikatny cień dla oddzielenia od tła.
+.decor-character {
+  display: block;
+  height: auto;
+  filter: drop-shadow(0 10px 16px rgba(78, 65, 36, 0.18));
+  pointer-events: none;
+}
+
+/// Miękka plama akwareli — tło pod cytatami, czysty CSS.
+.decor-blob {
+  position: absolute;
+  z-index: -1;
+  width: 340px;
+  height: 240px;
+  background: radial-gradient(ellipse at center, var(--pink) 0%, transparent 70%);
+  opacity: 0.16;
+  filter: blur(6px);
+  pointer-events: none;
+}

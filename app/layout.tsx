@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { EB_Garamond, Montserrat } from "next/font/google";
+import { Abril_Fatface, Alex_Brush, Bodoni_Moda, Lora, Sacramento } from "next/font/google";
 import { StructuredData } from "@/components/structured-data/structured-data";
 import { CallToAction } from "@/components/call-to-action/call-to-action";
 import "./globals.scss";
@@ -10,17 +10,41 @@ const TITLE = "Forrest — Przedszkole Metody Krakowskiej";
 const DESCRIPTION =
   "Forrest — przedszkole w Piasecznie i Woli Gołkowskiej. Metoda Krakowska, las jako plac zabaw i program, który rośnie razem z dzieckiem.";
 
-const ebGaramond = EB_Garamond({
-  variable: "--font-garamond",
+// Abril Fatface — duże nagłówki displayowe (wg dokumentu fontów klientki)
+const abrilFatface = Abril_Fatface({
+  variable: "--font-abril",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+});
+
+// Bodoni Moda — podtytuły, nawigacja, cytaty (elegancki serif o wysokim kontraście)
+const bodoniModa = Bodoni_Moda({
+  variable: "--font-bodoni",
+  subsets: ["latin", "latin-ext"],
+  style: ["normal", "italic"],
+  weight: ["500", "600", "700"],
+});
+
+// Lora — tekst akapitowy (lżejszy serif tekstowy, wygodny w dłuższych akapitach)
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin", "latin-ext"],
   style: ["normal", "italic"],
   weight: ["400", "500", "600", "700"],
 });
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+// Sacramento — duży akcent skryptowy (np. powtórzenie nagłówka w hero)
+const sacramento = Sacramento({
+  variable: "--font-sacramento",
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "400",
+});
+
+// Alex Brush — mniejszy, swobodniejszy akcent skryptowy na pojedyncze słowa
+const alexBrush = Alex_Brush({
+  variable: "--font-alex-brush",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
 });
 
 export const viewport: Viewport = {
@@ -71,7 +95,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pl"
-      className={`${ebGaramond.variable} ${montserrat.variable} antialiased`}
+      className={`${abrilFatface.variable} ${bodoniModa.variable} ${lora.variable} ${sacramento.variable} ${alexBrush.variable} antialiased`}
     >
       <body>
         <StructuredData />

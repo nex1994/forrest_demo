@@ -30,6 +30,7 @@ export function HeroVideo() {
         ref={videoRef}
         className="hero__video"
         src="/videos/hero.mp4"
+        poster="/images/forrest/gotowe/droga-las.jpg"
         autoPlay
         muted={muted}
         loop

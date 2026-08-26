@@ -1,3 +1,7 @@
+"use client";
+
+import { handleHashLinkClick } from "@/lib/scroll-to-section";
+
 export function CallToAction() {
   return (
     <section className="cta-bar">
@@ -8,7 +12,9 @@ export function CallToAction() {
             <a href="tel:+48692623327">+48 692 623 327</a>
           </div>
           <div className="cta-bar__button">
-            <a href="#kontakt">Dołącz do nas!</a>
+            <a href="#kontakt" onClick={(e) => handleHashLinkClick(e, "#kontakt")}>
+              Dołącz do nas!
+            </a>
           </div>
         </div>
       </div>

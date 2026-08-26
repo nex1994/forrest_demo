@@ -20,6 +20,11 @@
   box-shadow: v.$shadow-card;
 }
 
+/// Cień pod przyciskami CTA (navbar, dolny pasek) — odrywa je od jasnego tła.
+@mixin button-shadow {
+  box-shadow: 0 10px 20px -8px rgba(78, 65, 36, 0.35);
+}
+
 /// Wspólny padding sekcji (boki + dół), bez marginesu — centrowanie robi rodzic (body flex).
 @mixin section-padding {
   padding: 0 v.$section-padding-x v.$section-padding-bottom;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal/reveal";
+import { Expandable } from "@/components/expandable/expandable";
 
 const BOHATEROWIE = ["Miś Omi", "Króliczek Ami", "Gąska Agat", "Zajączek Papu"];
 
@@ -20,44 +21,48 @@ export function DziecinstwoSection() {
         </p>
       </Reveal>
 
-      <Reveal className="tile-grid tile-grid--3 mt-48">
-        <div className="tile">
-          <h3>Czym jest Dziennik?</h3>
-          <p className="section__lede">
-            To nie zeszyt ćwiczeń. To Dziennik Wydarzeń — miejsce, w którym spotyka się nauka,
-            codzienność i pamięć.
-          </p>
-          <p className="section__lede">
-            Znajdują się w nim karty pracy dopasowane nie tylko do tematu tygodnia, ale przede
-            wszystkim do możliwości rozwojowych konkretnego dziecka — bo w Forrest nie ma jednego,
-            uniwersalnego tempa nauki. Obok kart pracy, nauczycielki wklejają też informacje ważne dla
-            rodziców: jadłospis, zapowiedź wycieczki, ogłoszenia. Wszystko w jednym miejscu.
-          </p>
-        </div>
+      <Reveal className="mt-48">
+        <Expandable openLabel="Czytaj więcej o Dzienniku">
+          <div className="tile-grid tile-grid--3">
+            <div className="tile">
+              <h3>Czym jest Dziennik?</h3>
+              <p className="section__lede">
+                To nie zeszyt ćwiczeń. To Dziennik Wydarzeń — miejsce, w którym spotyka się nauka,
+                codzienność i pamięć.
+              </p>
+              <p className="section__lede">
+                Znajdują się w nim karty pracy dopasowane nie tylko do tematu tygodnia, ale przede
+                wszystkim do możliwości rozwojowych konkretnego dziecka — bo w Forrest nie ma jednego,
+                uniwersalnego tempa nauki. Obok kart pracy, nauczycielki wklejają też informacje ważne
+                dla rodziców: jadłospis, zapowiedź wycieczki, ogłoszenia. Wszystko w jednym miejscu.
+              </p>
+            </div>
 
-        <div className="tile">
-          <h3>Dlaczego to działa</h3>
-          <p className="section__lede">
-            Prawdziwe wydarzenia stają się naturalnym materiałem do nauki. Dziecko, które opowiada o
-            tym, co się wydarzyło, uczy się budować wypowiedzi, porządkować zdarzenia w czasie i
-            dostrzegać związki przyczynowo-skutkowe. Dziennik jest też mostem między przedszkolem a
-            domem. Każdego popołudnia wraca do szatni, gdzie czeka na rodzica. To moment, w którym
-            dziecko może opowiedzieć, co robiło, rodzic — dopisać coś od siebie, a wspólna rozmowa
-            zaczyna się naturalnie, zamiast standardowego pytania: <em>„no i jak było?”</em>.
-          </p>
-        </div>
+            <div className="tile">
+              <h3>Dlaczego to działa</h3>
+              <p className="section__lede">
+                Prawdziwe wydarzenia stają się naturalnym materiałem do nauki. Dziecko, które opowiada o
+                tym, co się wydarzyło, uczy się budować wypowiedzi, porządkować zdarzenia w czasie i
+                dostrzegać związki przyczynowo-skutkowe. Dziennik jest też mostem między przedszkolem a
+                domem. Każdego popołudnia wraca do szatni, gdzie czeka na rodzica. To moment, w którym
+                dziecko może opowiedzieć, co robiło, rodzic — dopisać coś od siebie, a wspólna rozmowa
+                zaczyna się naturalnie, zamiast standardowego pytania: <em>„no i jak było?”</em>.
+              </p>
+            </div>
 
-        <div className="tile">
-          <h3>Pamiątka na lata</h3>
-          <p className="section__lede">
-            Dziennik zostaje w domu. Nie jest oddawany, nie znika po roku szkolnym.
-          </p>
-          <p className="section__lede">
-            Po kilku latach staje się czymś więcej niż zbiorem kart pracy — to książka o dziecku,
-            napisana i narysowana przez nie samo. Widać w niej proces-progres, który trudno zauważyć
-            na bieżąco: pierwsze bazgroły, pierwsze litery, pierwsze zdania…
-          </p>
-        </div>
+            <div className="tile">
+              <h3>Pamiątka na lata</h3>
+              <p className="section__lede">
+                Dziennik zostaje w domu. Nie jest oddawany, nie znika po roku szkolnym.
+              </p>
+              <p className="section__lede">
+                Po kilku latach staje się czymś więcej niż zbiorem kart pracy — to książka o dziecku,
+                napisana i narysowana przez nie samo. Widać w niej progres, który trudno zauważyć
+                na bieżąco: pierwsze bazgroły, pierwsze litery, pierwsze zdania…
+              </p>
+            </div>
+          </div>
+        </Expandable>
       </Reveal>
 
       <Reveal className="split split--center mt-56">

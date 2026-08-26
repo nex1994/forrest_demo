@@ -10,8 +10,8 @@ export function MetodaSection() {
         </div>
         <div className="split__portrait split__portrait--metoda">
           <Image
-            src="/images/forrest/gotowe/metoda-litery.jpg"
-            alt="Nauka liter metodą Krakowską"
+            src="/images/forrest/gotowe/program-swiat.jpg"
+            alt="Dzieci z warzywami zebranymi podczas zajęć o świecie"
             fill
             sizes="(max-width: 430px) 360px, (max-width: 860px) 92vw, 360px"
             loading="eager"
@@ -22,7 +22,7 @@ export function MetodaSection() {
             Dziecko nie poznaje świata wyłącznie przy stoliku. Poznaje go całym sobą.
           </p>
           <p className="section__lede section__quote">
-            Dotyka. Pyta. Biega. Buduje. Obserwuj. Popełnia błędy. Próbuje jeszcze raz.
+            Dotyka. Pyta. Biega. Buduje. Obserwuje. Popełnia błędy. Próbuje jeszcze raz.
           </p>
           <p className="section__lede">
             Właśnie z takiego spojrzenia na dziecko powstała{" "}

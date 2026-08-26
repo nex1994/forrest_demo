@@ -3,11 +3,16 @@
 
 h1,
 h2,
-h3,
 .serif {
-  font-family: v.$font-serif;
-  font-weight: 500;
+  font-family: v.$font-display;
+  font-weight: 400;
   letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: v.$font-subhead;
+  font-weight: 700;
+  letter-spacing: -0.005em;
 }
 
 h1 {
@@ -22,7 +27,7 @@ h2 {
 }
 
 .eyebrow {
-  font-family: v.$font-sans;
+  font-family: v.$font-subhead;
   font-size: clamp(0.7rem, 0.66rem + 0.2vw, 0.78rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -44,8 +49,31 @@ h2 {
 }
 
 .section__quote {
-  font-family: v.$font-serif;
+  font-family: v.$font-subhead;
   font-style: italic;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/// Akcent skryptowy — tylko krótkie frazy/pojedyncze słowa (zasada klienta).
+.accent-script {
+  font-family: v.$font-script;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--sage-deep);
+}
+
+/// Wariant dopasowany do rozmiaru .section__title — samodzielny label (np. "Kim jestem"),
+/// żeby wyglądał tak samo jak "swoją drogę" wewnątrz nagłówka.
+.accent-script--lg {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+/// Mniejszy akcent skryptowy (Alex Brush) — pojedyncze słowo wewnątrz nagłówka.
+.accent-script-alt {
+  font-family: v.$font-script-alt;
+  font-style: normal;
+  font-weight: 400;
   color: var(--ink);
 }
 

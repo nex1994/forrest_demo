@@ -4,10 +4,17 @@
 .section {
   width: 100%;
   max-width: v.$section-max-width;
-  scroll-margin-top: 70px;
+  // Odstęp od góry przy skoku do kotwicy (#id) — musi pokrywać realną
+  // wysokość fixed navbara (logo-badge 112px/72px + padding), inaczej
+  // nagłówek sekcji chowa się pod paskiem nawigacji.
+  scroll-margin-top: 148px;
   position: relative;
   z-index: 1;
   @include m.section-padding;
+
+  @include m.mq(v.$bp-tablet) {
+    scroll-margin-top: 108px;
+  }
 }
 
 /// "Dlaczego Forrest" jest górną połową jednego wspólnego panelu z "Las, który uczy" —
@@ -22,6 +29,11 @@
 }
 
 #kontakt.section {
+  padding-top: 5rem;
+}
+
+#droga.section,
+#metoda.section {
   padding-top: 5rem;
 }
 
@@ -106,10 +118,6 @@
   padding-top: 48px;
 }
 
-.section--pb-sm {
-  padding-bottom: 65px;
-}
-
 /// Odstępy między blokami Reveal (zastępują pojedyncze inline marginTop)
 .mt-36 {
   margin-top: 36px;
@@ -172,19 +180,13 @@
   @include m.card-shadow;
   @include m.scale-hover;
 
-  &--rodzice {
-    height: auto;
-    max-height: 100vh;
-    aspect-ratio: 1108 / 1478;
-    border-radius: 7% 31% 10% 46% / 8% 33% 10% 43%;
-
-    img {
-      object-fit: contain;
-    }
-  }
-
   img {
     object-fit: cover;
+  }
+
+  &--rodzice {
+    height: auto;
+    aspect-ratio: 1108 / 1478;
   }
 }
 
@@ -198,7 +200,8 @@
   margin: 0 auto;
   position: relative;
   aspect-ratio: 1120 / 1496;
-  border-radius: v.$radius-lg;
+  // Łukowy kadr (drzwi/arch) — motyw z wizualizacji klientki.
+  border-radius: 260px 260px 24px 24px;
   overflow: hidden;
 
   img {
@@ -213,8 +216,6 @@
   &--program {
     aspect-ratio: 1131 / 1589;
     width: min(100%, calc(100vh * 1131 / 1589));
-    border-radius: 62% 38% 40% 60% / 30% 30% 70% 70%;
-    overflow: hidden;
   }
 }
 
@@ -224,9 +225,17 @@
   gap: 56px;
   align-items: stretch;
 
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+
   @include m.mq(v.$bp-desktop-sm) {
     flex-direction: column;
     gap: 28px;
+
+    &--reverse {
+      flex-direction: column;
+    }
   }
 }
 
@@ -274,6 +283,30 @@
   }
 }
 
+
+/// Hero "Każde dziecko ma swoją drogę" — proporczyki nad łukowym zdjęciem + cielę w tekście.
+.droga__calf {
+  margin-top: 28px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.droga__media {
+  position: relative;
+}
+
+.droga__pennants {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(70%, 320px);
+  z-index: 2;
+
+  @include m.mq(v.$bp-desktop-sm) {
+    width: min(80%, 280px);
+  }
+}
 
 /// Fade-in on scroll — patrz components/reveal/reveal.tsx
 .reveal {

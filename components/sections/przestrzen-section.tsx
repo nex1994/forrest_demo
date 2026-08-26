@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal/reveal";
+import { Expandable } from "@/components/expandable/expandable";
 
 const FEATURE_CARDS = [
   {
-    src: "/images/forrest/gotowe/zmienna-polka.jpg",
+    src: "/images/forrest/gotowe/zmienna-polka-real.jpg",
     alt: "Zmienna półka w sali Forrest",
     title: "Zmienna półka",
     paragraphs: [
@@ -13,7 +14,7 @@ const FEATURE_CARDS = [
     ],
   },
   {
-    src: "/images/forrest/gotowe/cicha-polka.jpg",
+    src: "/images/forrest/gotowe/cicha-polka-real.jpg",
     alt: "Cicha Półka — dzieci przy zabawce",
     title: "Cicha półka",
     paragraphs: [
@@ -23,7 +24,7 @@ const FEATURE_CARDS = [
     ],
   },
   {
-    src: "/images/forrest/gotowe/domek.jpg",
+    src: "/images/forrest/gotowe/domek-real.jpg",
     alt: "Kącik domku — wspólne czytanie",
     title: "Domek — mały świat społeczny",
     paragraphs: [
@@ -76,49 +77,65 @@ export function PrzestrzenSection() {
         </div>
       </Reveal>
 
-      <Reveal className="feature-row mt-56">
-        <div className="feature-row__text">
-          <h3>Przestrzeń do tworzenia</h3>
-          <p className="section__lede">Nie wszystko, czym bawi się dziecko, musi być gotową zabawką.</p>
-          <p className="section__lede">
-            Dlatego zawsze dostępne są kartony, papiery, fragmenty tapet, taśmy i inne materiały, z
-            których można budować, konstruować i tworzyć własny świat.
-          </p>
-          <p className="section__lede">
-            Karton może zostać domem, statkiem albo sklepem. To dziecko decyduje, czym stanie się za
-            chwilę.
-          </p>
-        </div>
-        <div className="feature-row__media">
-          <Image
-            src="/images/forrest/gotowe/przestrzen-tworzenia.jpg"
-            alt="Dzieci tworzące z papieru i farb"
-            fill
-            sizes="(max-width: 860px) 92vw, 46vw"
-          />
-        </div>
-      </Reveal>
+      <Reveal className="mt-56">
+        <Expandable openLabel="Czytaj więcej o przestrzeni">
+          <div className="feature-row">
+            <div className="feature-row__text">
+              <h3>Przestrzeń do tworzenia</h3>
+              <p className="section__lede">
+                Nie wszystko, czym bawi się dziecko, musi być gotową zabawką.
+              </p>
+              <p className="section__lede">
+                Dlatego zawsze dostępne są kartony, papiery, fragmenty tapet, taśmy i inne materiały, z
+                których można budować, konstruować i tworzyć własny świat.
+              </p>
+              <p className="section__lede">
+                Karton może zostać domem, statkiem albo sklepem. To dziecko decyduje, czym stanie się za
+                chwilę.
+              </p>
+            </div>
+            <div className="feature-row__media">
+              <Image
+                src="/images/forrest/gotowe/przestrzen-tworzenia-real.jpg"
+                alt="Dzieci tworzące z papieru i farb"
+                fill
+                sizes="(max-width: 860px) 92vw, 46vw"
+              />
+            </div>
+          </div>
 
-      <Reveal className="section__inner section__inner--wide section--center subsection mt-56">
-        <h3>Samodzielność zaczyna się od codzienności</h3>
-        <p className="section__lede">
-          W naszych salach są również rzeczy, których często nie kojarzymy z dziecięcą przestrzenią:
-          szczotki, szufelki i ściereczki.
-        </p>
-        <p className="section__lede">Są na wysokości dzieci i są po to, żeby z nich korzystać.</p>
-        <p className="section__lede">
-          Po posiłku czy zajęciach dzieci porządkują swoje miejsce i pomagają zadbać o wspólną
-          przestrzeń. Nie robimy wszystkiego za nie, jeśli potrafią zrobić to samodzielnie.
-        </p>
-        <p className="section__lede">
-          Bo samodzielności nie uczymy podczas specjalnych zajęć. Uczymy jej każdego dnia.
-        </p>
-        <p className="section__lede section__quote section__quote--lg">
-          W Forrest przestrzeń ma pomagać dziecku działać, myśleć, tworzyć, współpracować i stawać się
-          coraz bardziej samodzielnym.
-          <br />
-          Dlatego nic nie znajduje się tutaj przypadkiem.
-        </p>
+          <div className="feature-row feature-row--reverse mt-56">
+            <div className="feature-row__text">
+              <h3>Samodzielność zaczyna się od codzienności</h3>
+              <p className="section__lede">
+                W naszych salach są również rzeczy, których często nie kojarzymy z dziecięcą
+                przestrzenią: szczotki, szufelki i ściereczki.
+              </p>
+              <p className="section__lede">Są na wysokości dzieci i są po to, żeby z nich korzystać.</p>
+              <p className="section__lede">
+                Po posiłku czy zajęciach dzieci porządkują swoje miejsce i pomagają zadbać o wspólną
+                przestrzeń. Nie robimy wszystkiego za nie, jeśli potrafią zrobić to samodzielnie.
+              </p>
+              <p className="section__lede">
+                Bo samodzielności nie uczymy podczas specjalnych zajęć. Uczymy jej każdego dnia.
+              </p>
+              <p className="section__lede section__quote section__quote--lg">
+                W Forrest przestrzeń ma pomagać dziecku działać, myśleć, tworzyć, współpracować i
+                stawać się coraz bardziej samodzielnym.
+                <br />
+                Dlatego nic nie znajduje się tutaj przypadkiem.
+              </p>
+            </div>
+            <div className="feature-row__media">
+              <Image
+                src="/images/forrest/gotowe/samodzielnosc-real.jpg"
+                alt="Dziecko sięgające po materiały na wysokości swojej ręki"
+                fill
+                sizes="(max-width: 860px) 92vw, 46vw"
+              />
+            </div>
+          </div>
+        </Expandable>
       </Reveal>
     </section>
   );
