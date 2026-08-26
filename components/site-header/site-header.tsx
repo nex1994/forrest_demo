@@ -12,6 +12,11 @@ const NAV_LINKS = [
   { href: "#kontakt", label: "Kontakt" },
 ];
 
+const PLACOWKI_LOGOS = [
+  { href: "/wola-golkowska", name: "Wola Gołkowska", src: "/images/forrest/logo-wola-green.png" },
+  { href: "/piaseczno", name: "Piaseczno", src: "/images/forrest/logo-piaseczno-pink.png" },
+];
+
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -67,9 +72,16 @@ export function SiteHeader() {
         ))}
       </div>
 
-      <a className="nav__cta" href="#kontakt">
-        Dołącz do nas!
-      </a>
+      <div className="nav__placowki">
+        {PLACOWKI_LOGOS.map((p) => (
+          <a key={p.href} href={p.href} className="nav__placowka-link">
+            <span className="nav__placowka-badge">
+              <Image src={p.src} alt={`${p.name} — logo`} width={500} height={500} />
+              <span className="nav__placowka-name">{p.name}</span>
+            </span>
+          </a>
+        ))}
+      </div>
 
       <button
         type="button"

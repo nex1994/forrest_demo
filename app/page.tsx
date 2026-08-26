@@ -13,7 +13,6 @@ import { ChwileSection } from "@/components/sections/chwile-section";
 import { KontaktSection } from "@/components/sections/kontakt-section";
 import { QuoteBanner } from "@/components/sections/quote-banner";
 import { SiteFooter } from "@/components/site-footer/site-footer";
-import { DiamondDivider } from "@/components/decor/decor";
 
 export default function Home() {
   return (
@@ -29,13 +28,10 @@ export default function Home() {
         <DlaczegoSection />
         <LasSection />
         <MetodaSection />
-        <DiamondDivider />
         <PrzestrzenSection />
-        <DiamondDivider />
         <DziecinstwoSection />
         <QuoteBanner />
         <ProgramSection />
-        <DiamondDivider />
         <RodziceSection />
         <ChwileSection />
         <KontaktSection />

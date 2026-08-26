@@ -17,7 +17,7 @@ export function RodziceSection() {
         </div>
         <div className="split__media split__media--rodzice">
           <Image
-            src="/images/forrest/gotowe/tworzymy-razem-real.jpg"
+            src="/images/forrest/gotowe/rodzice-razem.jpg"
             alt="Dzieci i rodzice na wspólnym wydarzeniu Forrest"
             fill
             sizes="(max-width: 860px) 92vw, 46vw"

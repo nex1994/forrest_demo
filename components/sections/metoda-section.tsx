@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal/reveal";
-import { Bow } from "@/components/decor/decor";
 
 export function MetodaSection() {
   return (
@@ -8,12 +7,11 @@ export function MetodaSection() {
       <Reveal className="split split--center metoda__split">
         <div className="metoda__header">
           <h2 className="section__title">Jak uczy się dziecko</h2>
-          <Bow />
         </div>
         <div className="split__portrait split__portrait--metoda">
           <Image
-            src="/images/forrest/gotowe/metoda-litery.jpg"
-            alt="Nauka liter metodą Krakowską"
+            src="/images/forrest/gotowe/program-swiat.jpg"
+            alt="Dzieci z warzywami zebranymi podczas zajęć o świecie"
             fill
             sizes="(max-width: 430px) 360px, (max-width: 860px) 92vw, 360px"
             loading="eager"

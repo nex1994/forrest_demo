@@ -3,62 +3,6 @@ import Image from "next/image";
 /// Autorskie akcenty graficzne Forrest — subtelne, niskie krycie, nigdy pełnoekranowe.
 /// Patrz specyfikacja klienta, sekcja 5 "Autorskie elementy graficzne".
 
-export function Bow({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      className={`decor decor--bow ${className}`.trim()}
-      width="46"
-      height="30"
-      viewBox="0 0 46 30"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M23 15C23 15 19 4 10 4C4.5 4 2 8 2 11.5C2 16 6.5 18.5 12 17C17 15.6 23 15 23 15Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M23 15C23 15 27 4 36 4C41.5 4 44 8 44 11.5C44 16 39.5 18.5 34 17C29 15.6 23 15 23 15Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <circle cx="23" cy="15" r="3" fill="currentColor" />
-      <path d="M20 17L16 27M26 17L30 27" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-export function TreeMark({
-  className = "",
-  color,
-}: {
-  className?: string;
-  color?: string;
-}) {
-  return (
-    <svg
-      className={`decor decor--tree ${className}`.trim()}
-      style={color ? { color } : undefined}
-      width="30"
-      height="34"
-      viewBox="0 0 30 34"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M15 2L23 13H19L26 22H20.5L15 30M15 2L7 13H11L4 22H9.5L15 30M15 30V33"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 /// Listek — mikro-ornament, obok mniejszych nagłówków/etykiet.
 export function Leaf({ className = "" }: { className?: string }) {
   return (
@@ -127,11 +71,6 @@ export function Character({
       aria-hidden="true"
     />
   );
-}
-
-/// Cienki pasek w romby — separator na przejściu między zakładkami.
-export function DiamondDivider({ className = "" }: { className?: string }) {
-  return <div className={`decor-divider ${className}`.trim()} role="presentation" />;
 }
 
 /// Miękka plama akwareli w tle — czysty CSS, bez pliku graficznego.

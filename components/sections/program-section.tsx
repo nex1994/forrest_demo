@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal/reveal";
-import { Character, TreeMark } from "@/components/decor/decor";
+import { Character } from "@/components/decor/decor";
 import { Expandable } from "@/components/expandable/expandable";
 
 const WORLDS = [
@@ -16,8 +16,8 @@ export function ProgramSection() {
       <Reveal className="split">
         <div className="split__portrait split__portrait--program">
           <Image
-            src="/images/forrest/gotowe/program-glowne-real.jpg"
-            alt="Nauczycielka i dziecko układające litery przy oknie"
+            src="/images/forrest/gotowe/metoda-litery.jpg"
+            alt="Nauka liter metodą Krakowską"
             fill
             sizes="(max-width: 430px) 360px, (max-width: 860px) 92vw, 360px"
           />
@@ -31,14 +31,9 @@ export function ProgramSection() {
           <p className="section__lede">
             Program zbudowaliśmy wokół czterech obszarów dziecięcego poznania:
           </p>
-          <div className="worlds__header">
-            <TreeMark />
-            <span className="worlds__label">Język. Dom. Świat. Matematyka.</span>
-          </div>
           <div className="worlds worlds--with-character">
             {WORLDS.map((world) => (
               <div key={world.name} className={`card--world card--world--${world.slug}`}>
-                <TreeMark className="card--world__tree" />
                 <h3>{world.name}</h3>
               </div>
             ))}
@@ -100,17 +95,9 @@ export function ProgramSection() {
                 A czasem to właśnie dzieci decydują, dokąd zaprowadzi nas projekt.
               </p>
             </div>
-            <div className="feature-row__media">
-              <Image
-                src="/images/forrest/gotowe/z-natura-real.jpg"
-                alt="Dzieci poznające świat przyrody podczas projektu"
-                fill
-                sizes="(max-width: 860px) 92vw, 46vw"
-              />
-            </div>
           </div>
 
-          <div className="section__inner section__inner--wide section--center subsection mt-56">
+          <div className="section--center subsection mt-56">
             <h3>Demokratycznie</h3>
             <p className="section__lede section__quote">
               Mamy dużo jasnych zasad, dzięki czemu dajemy dzieciom dużo wolności.

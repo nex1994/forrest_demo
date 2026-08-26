@@ -211,7 +211,7 @@
 }
 
 .quote-banner__inner {
-  background: var(--ink);
+  background: var(--green-deep);
   border-radius: v.$radius-lg;
   padding: min(9vw, 80px) 6vw;
   text-align: center;
@@ -232,8 +232,13 @@
 }
 
 .quote-banner__logo {
-  width: 110px;
+  width: 160px;
   height: auto;
   filter: brightness(0) invert(1);
   opacity: 0.92;
+}
+
+#mala-grupa.section,
+#jezykowe-marzen.section {
+  padding-top: v.$section-padding-bottom;
 }

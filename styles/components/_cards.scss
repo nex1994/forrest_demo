@@ -13,17 +13,12 @@
 }
 
 /// Karta funkcji (Zmienna półka, Cicha półka, Domek, Biblioteczka)
-/// Naprzemiennie róż/zieleń zamiast jednej moreli — więcej życia bez odchodzenia od palety.
 .card--feature {
   border-radius: v.$radius-lg;
   overflow: hidden;
-  background: var(--pink-soft);
+  background: var(--cream-translucent);
   border: 1px solid var(--line);
   @include m.scale-hover;
-
-  &:nth-child(even) {
-    background: var(--green-soft);
-  }
 }
 
 .card--feature__image {
@@ -38,6 +33,7 @@
 
 .card--feature__body {
   padding: 32px 28px 36px;
+  color: var(--ink);
 
   h3 {
     font-size: clamp(1.2rem, 1rem + 1vw, 1.5rem);
@@ -45,8 +41,6 @@
   }
 
   p {
-    // ink-soft na jasnych tłach kart ma za niski kontrast — ink jest bezpieczny na obu wariantach.
-    color: var(--ink);
     line-height: 1.65;
     font-size: clamp(0.88rem, 0.8rem + 0.4vw, 0.98rem);
 
@@ -54,21 +48,6 @@
       margin-top: 12px;
     }
   }
-}
-
-/// Nagłówek nad kartami "światów" — mikro-ornament drzewka + fraza
-.worlds__header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.worlds__label {
-  font-family: v.$font-subhead;
-  font-style: italic;
-  font-size: clamp(1.05rem, 0.9rem + 0.7vw, 1.25rem);
-  color: var(--olive);
 }
 
 /// Cztery "światy" programu
@@ -102,7 +81,7 @@
   position: relative;
   padding: 32px 20px;
   border-radius: v.$radius-md;
-  background: #FAF2E7F0;
+  background: var(--cream-translucent);
   border: 1px solid var(--line);
   text-align: center;
   @include m.scale-hover;
@@ -110,31 +89,6 @@
   h3 {
     font-size: clamp(1.1rem, 0.9rem + 1vw, 1.4rem);
     margin-top: 10px;
-  }
-
-  &__tree {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    width: 18px;
-    height: auto;
-    opacity: 0.5;
-  }
-
-  &--jezyk {
-    background: var(--pink-soft);
-  }
-
-  &--dom {
-    background: #FAF2E7F0;
-  }
-
-  &--swiat {
-    background: var(--mist);
-  }
-
-  &--matematyka {
-    background: var(--green-light);
   }
 }
 
@@ -186,15 +140,6 @@
   font-family: v.$font-script;
   font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
   color: var(--ink);
-
-  &--character {
-    padding: 6px 24px 6px 6px;
-  }
-
-  img {
-    border-radius: 50%;
-    background: var(--cream);
-  }
 }
 
 /// Galeria "Tworzymy wspomnienia"

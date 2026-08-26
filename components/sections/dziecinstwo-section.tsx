@@ -1,14 +1,8 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal/reveal";
 import { Expandable } from "@/components/expandable/expandable";
-import { Character } from "@/components/decor/decor";
 
-const BOHATEROWIE: { name: string; character?: "teddy_bear" | "bunny_denim" }[] = [
-  { name: "Miś Omi", character: "teddy_bear" },
-  { name: "Króliczek Ami", character: "bunny_denim" },
-  { name: "Gąska Agat" },
-  { name: "Zajączek Papu" },
-];
+const BOHATEROWIE = ["Miś Omi", "Króliczek Ami", "Gąska Agat", "Zajączek Papu"];
 
 export function DziecinstwoSection() {
   return (
@@ -99,10 +93,9 @@ export function DziecinstwoSection() {
             pierwszego dnia w przedszkolu.
           </p>
           <div className="badges">
-            {BOHATEROWIE.map((b) => (
-              <span key={b.name} className={`badge${b.character ? " badge--character" : ""}`}>
-                {b.character && <Character name={b.character} width={54} />}
-                {b.name}
+            {BOHATEROWIE.map((name) => (
+              <span key={name} className="badge">
+                {name}
               </span>
             ))}
           </div>

@@ -33,7 +33,7 @@ const FEATURE_CARDS = [
     ],
   },
   {
-    src: "/images/forrest/gotowe/biblioteczka-real.jpg",
+    src: "/images/forrest/gotowe/biblioteczka.jpg",
     alt: "Biblioteczka z regałem i tipi",
     title: "Biblioteczka, w której wszystko ma swoje miejsce",
     paragraphs: [
