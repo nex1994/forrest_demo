@@ -4,10 +4,17 @@
 .section {
   width: 100%;
   max-width: v.$section-max-width;
-  scroll-margin-top: 70px;
+  // Odstęp od góry przy skoku do kotwicy (#id) — musi pokrywać realną
+  // wysokość fixed navbara (logo-badge 112px/72px + padding), inaczej
+  // nagłówek sekcji chowa się pod paskiem nawigacji.
+  scroll-margin-top: 148px;
   position: relative;
   z-index: 1;
   @include m.section-padding;
+
+  @include m.mq(v.$bp-tablet) {
+    scroll-margin-top: 108px;
+  }
 }
 
 /// "Dlaczego Forrest" jest górną połową jednego wspólnego panelu z "Las, który uczy" —

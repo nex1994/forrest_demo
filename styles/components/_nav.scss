@@ -43,6 +43,8 @@
 }
 
 .nav__brand {
+  position: relative;
+  z-index: 201;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -141,7 +143,7 @@
   gap: 16px;
 
   @include m.mq(v.$bp-tablet-lg) {
-    gap: 10px;
+    display: none;
   }
 }
 
@@ -202,6 +204,8 @@
 
 /// Hamburger — widoczny tylko poniżej progu, na którym chowają się .nav__links.
 .nav__burger {
+  position: relative;
+  z-index: 201;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -220,7 +224,9 @@
     height: 2px;
     background: #fff;
     filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
-    transition: background 0.3s ease-in-out;
+    transform-origin: 50% center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease-in-out,
+      background 0.3s ease-in-out;
   }
 
   @include m.mq(v.$bp-tablet-lg) {
@@ -232,20 +238,46 @@
   background: var(--ink);
 }
 
+/// Hamburger -> X, te same przesunięcia/kąty i easing co w referencji (bynexo.pl).
+.nav--open .nav__burger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav--open .nav__burger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav--open .nav__burger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/// Rozwijany panel mobilny — zsuwa się z góry (translateY), nie zajmuje całego ekranu.
+/// Wielkość i easing dopasowane proporcjonalnie do reszty strony, tak jak w referencji (bynexo.pl).
 .nav__mobile {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 190;
+  display: flex;
+  flex-direction: column;
+  background: rgba(250, 242, 231, 0.98);
+  backdrop-filter: blur(6px);
+  padding: 68px 6vw 28px;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 16px 32px -20px rgba(78, 65, 36, 0.35);
+  max-height: 100vh;
+  overflow-y: auto;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav--open .nav__mobile {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  inset: 68px 0 0 0;
-  z-index: 190;
-  background: var(--cream);
-  padding: 12px 6vw 40px;
-  gap: 4px;
-  overflow-y: auto;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .nav__mobile-link {
@@ -257,15 +289,16 @@
   border-bottom: 1px solid var(--line);
 }
 
-.nav__mobile-cta {
-  display: inline-block;
-  margin-top: 24px;
-  text-align: center;
-  background: var(--mist);
-  color: var(--olive);
-  text-decoration: none;
-  font-weight: 700;
-  padding: 16px 24px;
-  border-radius: v.$radius-sm;
-  @include m.button-shadow;
+/// Przyciski placówek w panelu mobilnym — na dole, obok siebie.
+.nav__mobile-placowki {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+
+  .nav__placowka-name {
+    display: block;
+  }
 }

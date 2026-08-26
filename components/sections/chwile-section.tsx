@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Reveal } from "@/components/reveal/reveal";
 import { WatercolorBlob } from "@/components/decor/decor";
+import { handleHashLinkClick } from "@/lib/scroll-to-section";
 
 const GALLERY = [
   {
@@ -77,7 +80,7 @@ export function ChwileSection() {
             nami na długo.
           </p>
         </div>
-        <a className="btn--primary" href="#kontakt">
+        <a className="btn--primary" href="#kontakt" onClick={(e) => handleHashLinkClick(e, "#kontakt")}>
           Zobacz nasze wspólne chwile →
         </a>
       </Reveal>

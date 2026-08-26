@@ -15,6 +15,13 @@
 
 html {
   scroll-behavior: smooth;
+  // Blokujemy poziomy scroll na elemencie, który już jest głównym scroll
+  // containerem strony. Ta sama reguła na body (przy domyślnym overflow-y:
+  // visible) zmuszałaby przeglądarkę do potraktowania overflow-y jak "auto"
+  // (reguła CSS: overflow-x != visible + overflow-y == visible -> auto),
+  // co tworzy niezamierzony, "martwy" kontener scrolla na body i psuje
+  // scrollIntoView/skoki do kotwic (#id) — link w nawigacji przestaje działać.
+  overflow-x: hidden;
 }
 
 a,
@@ -42,7 +49,6 @@ body {
   color: var(--ink);
   font-family: v.$font-body;
   font-weight: 400;
-  overflow-x: hidden;
   position: relative;
   display: flex;
   flex-direction: column;

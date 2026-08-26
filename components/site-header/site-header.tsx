@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { handleHashLinkClick, scrollToHashTarget } from "@/lib/scroll-to-section";
 
 const NAV_LINKS = [
-  { href: "#historia", label: "Historia" },
+  { href: "#droga", label: "Historia" },
   { href: "#metoda", label: "Metoda" },
   { href: "#przestrzen", label: "Przestrzeń" },
   { href: "#program", label: "Program" },
@@ -36,6 +37,20 @@ export function SiteHeader() {
     };
   }, [menuOpen]);
 
+  /// Wejście na stronę z hashem w adresie (#sekcja) — natywne przewinięcie
+  /// przy wczytaniu jest zawodne, więc robimy to sami po pełnym załadowaniu.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const scroll = () => scrollToHashTarget(hash, "auto");
+    if (document.readyState === "complete") {
+      scroll();
+    } else {
+      window.addEventListener("load", scroll, { once: true });
+      return () => window.removeEventListener("load", scroll);
+    }
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -66,7 +81,12 @@ export function SiteHeader() {
 
       <div className="nav__links">
         {NAV_LINKS.map((link) => (
-          <a key={link.href} className="nav__link" href={link.href}>
+          <a
+            key={link.href}
+            className="nav__link"
+            href={link.href}
+            onClick={(e) => handleHashLinkClick(e, link.href)}
+          >
             {link.label}
           </a>
         ))}
@@ -95,15 +115,30 @@ export function SiteHeader() {
         <span />
       </button>
 
-      <div className="nav__mobile" hidden={!menuOpen}>
+      <div className="nav__mobile" inert={!menuOpen}>
         {NAV_LINKS.map((link) => (
-          <a key={link.href} className="nav__mobile-link" href={link.href} onClick={closeMenu}>
+          <a
+            key={link.href}
+            className="nav__mobile-link"
+            href={link.href}
+            onClick={(e) => {
+              handleHashLinkClick(e, link.href);
+              closeMenu();
+            }}
+          >
             {link.label}
           </a>
         ))}
-        <a className="nav__mobile-cta" href="#kontakt" onClick={closeMenu}>
-          Dołącz do nas!
-        </a>
+        <div className="nav__mobile-placowki">
+          {PLACOWKI_LOGOS.map((p) => (
+            <a key={p.href} href={p.href} className="nav__placowka-link" onClick={closeMenu}>
+              <span className="nav__placowka-badge">
+                <Image src={p.src} alt={`${p.name} — logo`} width={500} height={500} />
+                <span className="nav__placowka-name">{p.name}</span>
+              </span>
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   );
